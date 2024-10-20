@@ -1,8 +1,7 @@
 # Simple-Project-Py
-Below are the steps in order to reproduce the present repository.
+Below are the steps in order to get started building a python project, by presenting the step-by-step process to recreate this project from scratch.
 
 
-# 1. Setup your project
 ## Prerequisites
 Having the `conda` command available on your system. This is obtained by installing one (and only one!) of the following:
 - Anaconda
@@ -83,24 +82,9 @@ poetry install
 ```
 
 
-## Push your modifications to github
-Stage your local changes
-```shell
-git add .
-```
-Commit these changes to your local git history
-```shell
-git commit
-```
-Push these commited changes towards your remote Github repository
-```shell
-git push
-```
-You should be able to see the changes in your Github repository by refreshing the web page `https://github.com/<git-user-name>/<repo-name>`.
+## Add source code to your project
+A python project's source code carry the main utility functions of your project, such as data loaders, preprocessing, training and evaluation of a Machine Learning model. This is illustrated with the minimalistic example below.
 
-
-# 2. Develop your project
-## Add source code
 Create a new python module `src/<mypkgname>/custom_functions.py` with content
 ```python
 def is_odd(n: int) -> bool:
@@ -121,17 +105,18 @@ You can use this code in a Jupyter notebook or in a python interpreter
 from <mypkgname>.custom_functions import is_even, is_odd
 
 is_even(12345)
+is_odd(12345)
 ```
 
 
 ## Create an entry point of your project
 An entry point is a script that provides the functionality desired from this project. To that end wer will use the `fire` package that seamessly converts command line arguments into inputs of python functions.
 
-Create a `cli_demo.py` pythyon module at the root of your project, and add content
+Create a `cli_demo.py` python module at the root of your project, and add content
 ```python
 from fire import Fire
 
-from <mypkgname>.custom_functions import is_even, is_odd
+from <mypkgname>.custom_functions import is_even
 
 
 if __name__ == '__main__':
@@ -150,7 +135,7 @@ Create a `app_demo.py` pythyon module at the root of your project, and add conte
 ```python
 import streamlit as st
 
-from simplepypkg.custom_functions import is_even, is_odd
+from simplepypkg.custom_functions import is_even
 
 
 def app():
@@ -159,9 +144,9 @@ def app():
     if n:
         resp = is_even(n)
         if resp:
-            st.success('It is even !')
+            st.success(f'{n} is even !')
         else:
-            st.info('It is odd...')
+            st.info(f'{n} is odd...')
 
 
 if __name__ == '__main__':
@@ -174,9 +159,21 @@ streamlit run app_demo.py
 ```
 
 
-## Push your modifications to Github
-Perform as before.
+## Push your modifications to github
+Stage your local changes
+```shell
+git add .
+```
+Commit these changes to your local git history
+```shell
+git commit
+```
+Push these commited changes towards your remote Github repository
+```shell
+git push
+```
+You should be able to see the changes in your Github repository by refreshing the web page `https://github.com/<git-user-name>/<repo-name>`.
 
 
-# Congratulations ! 
+## Congratulations ! 
 You made it to the end of this tutorial. Happy coding !
