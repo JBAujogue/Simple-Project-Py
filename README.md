@@ -135,7 +135,7 @@ Create a `app_demo.py` pythyon module at the root of your project, and add conte
 ```python
 import streamlit as st
 
-from simplepypkg.custom_functions import is_even
+from <mypkgname>.custom_functions import is_even
 
 
 def app():
